@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "arxiv-agent"
+name = "arxiv-ai-agent"
 version = "0.1.0"
 description = "An LLM powered research assistant that finds, ranks, and explains recent AI papers on arxiv.org."
 readme = "README.md"
@@ -24,5 +24,5 @@ dependencies = [
 Homepage = "https://github.com/your-user/arxiv-agent"
 
 [project.scripts]
-arxiv-agent = "arxiv_agent.__main__:main"
+arxiv-ai-agent = "arxiv_agent.__main__:main"
 

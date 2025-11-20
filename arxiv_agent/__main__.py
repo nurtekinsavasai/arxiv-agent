@@ -14,7 +14,7 @@ def main() -> None:
     It programmatically calls `streamlit run` on the packaged app.py file.
     """
     script_path = os.path.abspath(app.__file__)
-    sys.argv = ["streamlit", "run", script_path, "--server.headless", "true"]
+    sys.argv = ["streamlit", "run", script_path]
     stcli.main()
 
 
