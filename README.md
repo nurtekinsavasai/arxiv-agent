@@ -48,13 +48,13 @@ It fetches recent `cs.AI` and `cs.LG` papers, selects candidates with embeddings
 You can install the package directly from the public GitHub repo:
 
 ```bash
-pip install "git+https://github.com/YOUR_USER/arxiv-agent.git"
+pip install "git+https://github.com/nurtekinsavasai/arxiv-agent"
 ```
 
 ### Development install (recommended if you plan to modify the code)
 
 ```bash
-git clone https://github.com/YOUR_USER/arxiv-agent.git
+git clone https://github.com/nurtekinsavasai/arxiv-agent
 cd arxiv-agent
 
 python3 -m venv .venv
