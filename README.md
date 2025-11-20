@@ -52,7 +52,7 @@ You can install the package directly from the repo once it is public, for exampl
 ```bash
 pip install "git+https://github.com/YOUR_USER/arxiv-agent.git"
 
-Or in development mode from a clone:
+### Or in development mode from a clone:
 
 git clone https://github.com/YOUR_USER/arxiv-agent.git
 cd arxiv-agent
@@ -62,45 +62,45 @@ source .venv/bin/activate
 
 pip install -e .
 
-After install you can start the UI with:
+### After install you can start the UI with:
 arxiv-agent
 
-This runs the packaged Streamlit app and opens it in your browser.
+### This runs the packaged Streamlit app and opens it in your browser.
 
-You can also run it explicitly with Streamlit:
+### You can also run it explicitly with Streamlit:
 
 streamlit run arxiv_agent/app.py
 
-OpenAI API key
+### OpenAI API key
 
-The app uses the OpenAI API for:
+### The app uses the OpenAI API for:
 
-Chat models for relevance classification
+### Chat models for relevance classification
 
-Chat models for 1 year citation prediction
+### Chat models for 1 year citation prediction
 
-Chat models for plain English summaries
+### Chat models for plain English summaries
 
-Embedding model text-embedding-3-large for semantic similarity
+### Embedding model text-embedding-3-large for semantic similarity
 
-You provide your key in the sidebar.
+### You provide your key in the sidebar.
 
-The app:
+### The app:
 
-Uses the key only in memory for the current session
+### Uses the key only in memory for the current session
 
-Does not write the key to disk
+### Does not write the key to disk
 
-Does not log or export the key in any artifact
+### Does not log or export the key in any artifact
 
-You are billed directly by OpenAI under your own account.
+### You are billed directly by OpenAI under your own account.
 
-Current limitations and ethical notes
+### Current limitations and ethical notes
 
-Citation counts are heuristic signals, not ground truth.
+### Citation counts are heuristic signals, not ground truth.
 
-Predictions may reflect existing academic biases, for example favoring large labs, hot topics, and English language venues.
+### Predictions may reflect existing academic biases, for example favoring large labs, hot topics, and English language venues.
 
-The tool is intended for exploration, inspiration, and triage, not for formal evaluation of people or institutions.
+### The tool is intended for exploration, inspiration, and triage, not for formal evaluation of people or institutions.
 
-Use the outputs critically and always read the actual papers.
+### Use the outputs critically and always read the actual papers.
