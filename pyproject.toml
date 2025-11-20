@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arxiv-agent"
+version = "0.1.0"
+description = "An LLM powered research assistant that finds, ranks, and explains recent AI papers on arxiv.org."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Nurtekin Savas" }
+]
+license = { text = "MIT" }
+
+dependencies = [
+  "streamlit>=1.50.0",
+  "requests>=2.31.0",
+  "feedparser>=6.0.10",
+  "openai>=1.55.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-user/arxiv-agent"
+
+[project.scripts]
+arxiv-agent = "arxiv_agent.__main__:main"
+
