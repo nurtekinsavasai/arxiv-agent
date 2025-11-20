@@ -43,17 +43,17 @@ It fetches recent `cs.AI` and `cs.LG` papers, selects candidates with embeddings
 
 ---
 
-## How to run locally
+## Installation
 
-### 1. Install
-
-You can install the package directly from the repo once it is public, for example:
+You can install the package directly from the public GitHub repo:
 
 ```bash
 pip install "git+https://github.com/YOUR_USER/arxiv-agent.git"
+```
 
-### Or in development mode from a clone:
+### Development install (recommended if you plan to modify the code)
 
+```bash
 git clone https://github.com/YOUR_USER/arxiv-agent.git
 cd arxiv-agent
 
@@ -61,46 +61,46 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 pip install -e .
+```
 
-### After install you can start the UI with:
+## Running the App
+
+Start the UI using the packaged command:
+
+```bash
 arxiv-agent
+```
 
-### This runs the packaged Streamlit app and opens it in your browser.
+This launches the Streamlit UI in your browser.
 
-### You can also run it explicitly with Streamlit:
+Or run it explicitly with Streamlit:
 
+```bash
 streamlit run arxiv_agent/app.py
+```
 
-### OpenAI API key
+## OpenAI API Key
 
-### The app uses the OpenAI API for:
+The app uses the OpenAI API for:
 
-### Chat models for relevance classification
+- Chat models for relevance classification
+- Chat models for 1-year citation prediction
+- Chat models for plain English summaries
+- `text-embedding-3-large` for semantic similarity
 
-### Chat models for 1 year citation prediction
+You provide your API key in the sidebar.
 
-### Chat models for plain English summaries
+**Important notes about the key:**
 
-### Embedding model text-embedding-3-large for semantic similarity
+- It is used only in memory for the active session
+- It is never written to disk
+- It is never logged or exported in any artifact
+- You are billed directly by OpenAI under your own account
 
-### You provide your key in the sidebar.
+## Current Limitations & Ethical Notes
 
-### The app:
-
-### Uses the key only in memory for the current session
-
-### Does not write the key to disk
-
-### Does not log or export the key in any artifact
-
-### You are billed directly by OpenAI under your own account.
-
-### Current limitations and ethical notes
-
-### Citation counts are heuristic signals, not ground truth.
-
-### Predictions may reflect existing academic biases, for example favoring large labs, hot topics, and English language venues.
-
-### The tool is intended for exploration, inspiration, and triage, not for formal evaluation of people or institutions.
-
-### Use the outputs critically and always read the actual papers.
+- Citation predictions are heuristics, not ground-truth forecasts
+- Predictions may reflect existing academic biases
+  (Large labs, English-language venues, trendy areas, etc.)
+- The tool is meant for exploration and inspiration, not evaluating people or institutions
+- Always verify results by reading the actual papers
