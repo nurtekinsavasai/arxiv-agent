@@ -666,7 +666,7 @@ def main():
         # Replace this URL with your actual demo video link
         st.link_button(
             "▶ Watch a short demo",
-            "https://example.com/arxiv-agent-demo"
+            "https://youtu.be/PqJiYTvOP1M"
         )
 
     st.markdown("""

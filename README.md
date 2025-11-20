@@ -2,6 +2,8 @@
 
 An LLM powered research assistant that finds, ranks, and explains recent AI papers on arxiv.org.
 
+▶️ **Watch a demo**: https://youtu.be/PqJiYTvOP1M
+
 ## 🚀 Try it Online (no installation needed)
 
 You can use the hosted Streamlit version here:
