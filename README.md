@@ -2,59 +2,35 @@
 
 An LLM powered research assistant that finds, ranks, and explains recent AI papers on arxiv.org.
 
-It fetches recent `cs.AI` and `cs.LG` papers, selects candidates with embeddings, classifies relevance with an LLM, predicts 1 year citation counts, and gives you a ranked, annotated digest with plain English summaries.
+## 🚀 Try it Online (no installation needed)
+
+You can use the hosted Streamlit version here:
+
+👉 **https://arxiv-agent-atclu7bhsjhbqjk8lndeus.streamlit.app/**
+
+You'll provide your own OpenAI API key in the sidebar.  
+Your key is used only in memory for the session and never saved or logged.
 
 ---
 
-## Features
-
-- 🔍 **Natural language research brief**  
-  Describe what you are looking for and optionally what you are not interested in.  
-  If you leave both fields empty the agent switches to a global mode and looks for the most impactful recent `cs.AI` and `cs.LG` papers overall.
-
-- 📡 **Automatic arXiv fetching**  
-  Fetches up to about 5000 papers in a date window from the `cs.AI` and `cs.LG` categories on arxiv.org.
-
-- 🧭 **Embedding based candidate selection**  
-  In targeted mode it uses OpenAI embeddings (`text-embedding-3-large`) to find the papers that are closest in meaning to your brief and keeps the top 150 candidates.  
-  In global mode it simply takes the most recent 150 papers.
-
-- 🧮 **LLM relevance classification**  
-  In targeted mode an LLM reads each candidate and labels it as:
-  - `primary`  main contribution directly matches your brief  
-  - `secondary` your topic is only a minor part or example  
-  - `off topic` not really about your brief  
-
-- 🎯 **Prediction set construction**  
-  The agent builds a prediction set for citation estimation:
-  - Keeps all `primary` papers  
-  - If there are fewer than about 20, it tops up with the strongest `secondary` papers  
-  - In global mode all candidates are used  
-
-- 📈 **1 year citation predictions**  
-  For each paper in the prediction set an LLM estimates how many citations it might receive one year after publication, based on topic trendiness, novelty, depth, and breadth of audience.
-
-- 🧾 **Plain English summaries**  
-  For the top N ranked papers the agent generates a non technical summary so a smart reader without ML background can follow.
-
-- 💾 **Full artifact export**  
-  All intermediate artifacts and a markdown report are saved under  
-  `~/arxiv_ai_digest_projects/project_<timestamp>/` and can be downloaded as a ZIP.
-
----
-
-## Installation
-
-You can install the package directly from the public GitHub repo:
+## 📦 Install Locally (via PyPI)
 
 ```bash
-pip install "git+https://github.com/nurtekinsavasai/arxiv-agent"
+pip install arxiv-ai-agent
 ```
 
-### Development install (recommended if you plan to modify the code)
+Then launch the app:
 
 ```bash
-git clone https://github.com/nurtekinsavasai/arxiv-agent
+arxiv-ai-agent
+```
+
+This will start the Streamlit interface and open it in your browser (or show you a Local URL if the browser does not auto-launch).
+
+## 💻 Install from GitHub (development mode)
+
+```bash
+git clone https://github.com/nurtekinsavasai/arxiv-agent.git
 cd arxiv-agent
 
 python3 -m venv .venv
@@ -63,44 +39,68 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-## Running the App
-
-Start the UI using the packaged command:
+Then run:
 
 ```bash
-arxiv-agent
+arxiv-ai-agent
 ```
 
-This launches the Streamlit UI in your browser.
-
-Or run it explicitly with Streamlit:
-
-```bash
-streamlit run arxiv_agent/app.py
-```
-
-## OpenAI API Key
+## 🔑 OpenAI API Key
 
 The app uses the OpenAI API for:
 
-- Chat models for relevance classification
-- Chat models for 1-year citation prediction
-- Chat models for plain English summaries
-- `text-embedding-3-large` for semantic similarity
+- Relevance classification
+- Citation prediction
+- Plain-English paper summaries
+- Embeddings (`text-embedding-3-large`)
 
-You provide your API key in the sidebar.
+Your key is:
 
-**Important notes about the key:**
+- Provided manually in the sidebar
+- Used only for the active session
+- Never saved
+- Never exported
+- Never written to disk
 
-- It is used only in memory for the active session
-- It is never written to disk
-- It is never logged or exported in any artifact
-- You are billed directly by OpenAI under your own account
+You are billed directly under your own OpenAI account.
 
-## Current Limitations & Ethical Notes
+## 📚 What the Agent Does
 
-- Citation predictions are heuristics, not ground-truth forecasts
-- Predictions may reflect existing academic biases
-  (Large labs, English-language venues, trendy areas, etc.)
-- The tool is meant for exploration and inspiration, not evaluating people or institutions
-- Always verify results by reading the actual papers
+**You provide:**
+
+- A short research brief in natural language
+- Optional exclusions (things you don't want)
+- A date range (3 days, 7 days, or 30 days)
+
+**The agent:**
+
+- Fetches recent `cs.AI` + `cs.LG` papers from arXiv
+- Uses embeddings to rank semantic similarity
+- Uses an LLM to classify papers as primary, secondary, or off-topic
+- Selects ~20 promising papers
+- Predicts 1-year citation impact using an LLM
+- Ranks papers by predicted influence
+
+**Provides:**
+
+- Paper metadata
+- Abstract
+- PDF link
+- Plain-English summary
+- Explanation of the citation prediction
+- Lets you download all artifacts as a ZIP
+
+## ⚠️ Limitations & Ethical Notes
+
+- Citation predictions are heuristic and approximate.
+- They may reflect academic biases, trends, and popularity.
+- This tool is for exploration and inspiration — not formal evaluation of researchers, institutions, or grant proposals.
+- Always read the actual papers before relying on any automated ranking.
+
+## 🧭 Future Work
+
+- Expand beyond `cs.AI` + `cs.LG`
+- Support more LLM providers and models
+- Add multi-step agentic reasoning
+- Add full background workflows for autonomous research assistants
+- Enhance citation prediction framework
