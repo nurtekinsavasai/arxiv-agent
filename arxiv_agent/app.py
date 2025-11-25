@@ -133,7 +133,7 @@ def fetch_arxiv_papers_by_date(
         retries = 0
         while True:
             try:
-                response = requests.get(base_url, params=params, timeout=30)
+                response = requests.get(base_url, params=params, timeout=60)
             except requests.RequestException as e:
                 st.error(f"Network error while calling arXiv: {e}")
                 return results
