@@ -176,8 +176,8 @@ def fetch_arxiv_papers_by_date(
 
             if published_date < start_date:
                 return results
-            if published_date > end_date:
-                continue
+            #if published_date > end_date:
+            #    continue
 
             authors = [a.name for a in entry.authors] if "authors" in entry else []
             email_domains: List[str] = []
@@ -205,8 +205,8 @@ def fetch_arxiv_papers_by_date(
             results.append(paper)
             batch_added += 1
 
-        if batch_added == 0:
-            break
+        #if batch_added == 0:
+        #    break
 
         start_index += batch_size
         time.sleep(1.0)
