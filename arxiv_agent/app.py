@@ -16,3 +16,9 @@ components.html(
     """,
     height=0,
 )
+
+# Method 2: HTML Meta Refresh (Fallback)
+st.markdown(
+    f'<meta http-equiv="refresh" content="0;url={new_url}">',
+    unsafe_allow_html=True
+)
