@@ -22,3 +22,9 @@ st.markdown(
     f'<meta http-equiv="refresh" content="0;url={new_url}">',
     unsafe_allow_html=True
 )
+
+# Method 3: Visual Fallback (User Click)
+st.title("We have moved!")
+st.info("You are being redirected to the new version of the app...")
+st.markdown(f"If you are not redirected automatically, [click here]({new_url}).")
+st.link_button("Go to New App", new_url, type="primary")
