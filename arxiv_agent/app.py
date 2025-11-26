@@ -26,17 +26,10 @@ st.set_page_config(page_title="Redirecting...", layout="centered")
 new_url = "https://research-aiagent.streamlit.app/"
 
 # =========================================================
-# STRATEGY 2: The Component Iframe Script (Executes in Sandbox)
+# STRATEGY 3: HTML Meta Refresh (The Passive Approach)
 # =========================================================
-# This creates a tiny invisible iframe that runs pure JS.
-# We try both window.parent and window.top to escape the sandbox.
-js_code = f"""
-<script>
-    try {{
-        window.top.location.href = "{new_url}";
-    }} catch (e) {{
-        window.parent.location.href = "{new_url}";
-    }}
-</script>
-"""
-components.html(js_code, height=0, width=0)
+# This tells the browser engine directly to switch URLs after 0 seconds.
+st.markdown(
+    f'<meta http-equiv="refresh" content="0;url={new_url}">',
+    unsafe_allow_html=True
+)
