@@ -1,14 +1,18 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Redirecting")
+st.set_page_config(page_title="Redirecting...")
 
-st.markdown(
-    """
+# The new URL
+new_url = "https://research-aiagent.streamlit.app/"
+
+# Method 1: JavaScript Redirect via Components
+# We use 'window.top.location.href' to ensure we break out of the Streamlit iframe
+components.html(
+    f"""
     <script>
-        window.location.replace("https://research-aiagent.streamlit.app/");
+        window.top.location.href = "{new_url}";
     </script>
     """,
-    unsafe_allow_html=True,
+    height=0,
 )
-
-st.write("Redirecting to the new version of the app...")
