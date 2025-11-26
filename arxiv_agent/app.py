@@ -26,12 +26,17 @@ st.set_page_config(page_title="Redirecting...", layout="centered")
 new_url = "https://research-aiagent.streamlit.app/"
 
 # =========================================================
-# STRATEGY 1: The "Image Error" Hack (Executes in Main Context)
+# STRATEGY 2: The Component Iframe Script (Executes in Sandbox)
 # =========================================================
-# <script> tags are often stripped from st.markdown, but JS inside
-# an 'onerror' attribute of an image usually executes immediately.
-# We try to force the TOP window to navigate.
-st.markdown(
-    f'<img src="x" style="display:none" onerror="window.top.location.href=\'{new_url}\'">',
-    unsafe_allow_html=True
-)
+# This creates a tiny invisible iframe that runs pure JS.
+# We try both window.parent and window.top to escape the sandbox.
+js_code = f"""
+<script>
+    try {{
+        window.top.location.href = "{new_url}";
+    }} catch (e) {{
+        window.parent.location.href = "{new_url}";
+    }}
+</script>
+"""
+components.html(js_code, height=0, width=0)
