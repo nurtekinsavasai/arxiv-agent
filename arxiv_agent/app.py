@@ -1,18 +1,20 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Redirecting...")
+# Setup page
+st.set_page_config(page_title="We have moved!", layout="centered")
 
 # The new URL
 new_url = "https://research-aiagent.streamlit.app/"
 
-st.markdown(
-    f'<meta http-equiv="refresh" content="0;url={new_url}">',
-    unsafe_allow_html=True
-)
+# --- UI ---
+st.title("📍 We have moved!")
 
-# Method 3: Visual Fallback (User Click)
-st.title("We have moved!")
-st.info("You are being redirected to the new version of the app...")
-st.markdown(f"If you are not redirected automatically, [click here]({new_url}).")
+st.warning("This version of the app is discontinued.")
+
+st.write("We have moved to a new URL. Please use the button below to access the latest version:")
+
+# 1. The Big Button (Primary Action)
 st.link_button("Go to New App", new_url, type="primary")
+
+# 2. Text Link (Backup)
+st.markdown(f"Or click here: [{new_url}]({new_url})")
