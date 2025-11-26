@@ -1,13 +1,14 @@
 import streamlit as st
 
-st.set_page_config(page_title="Redirecting to Research Agent")
+st.set_page_config(page_title="Redirecting")
 
 st.markdown(
     """
-    <meta http-equiv="refresh" content="0; url='https://research-aiagent.streamlit.app/'" />
+    <script>
+        window.location.replace("https://research-aiagent.streamlit.app/");
+    </script>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
-st.write("Redirecting…")
-
+st.write("Redirecting to the new version of the app...")
